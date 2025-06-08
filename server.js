@@ -8,11 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Import routingu
 const customersRoute = require("./routes/customers");
 const authRoute = require("./routes/auth");
 
-// Użycie tras
 app.use("/customers", customersRoute);
 app.use("/", authRoute);
 

@@ -19,7 +19,7 @@ const customerSchema = new mongoose.Schema(
       zip: String,
     },
     notes: String,
-    services: [serviceSchema], // <--- dodajemy to pole
+    services: [serviceSchema],
   },
   { timestamps: true }
 );
