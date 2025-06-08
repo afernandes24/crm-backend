@@ -32,4 +32,18 @@ router.post("/login", async (req, res) => {
   res.json({ token });
 });
 
+router.get("/auth/validate-token", (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.split(" ")[1];
+
+  if (!token) return res.status(401).json({ error: "Brak tokena" });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json({ valid: true });
+  } catch {
+    res.status(401).json({ valid: false });
+  }
+});
+
 module.exports = router;
